@@ -14,7 +14,7 @@ struct icaloriesApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                ///모든 곳에서 이 데이터를 쓸 수 있게하는 코드
+                ///모든 곳에서 이 데이터를 쓸 수 있게하는 코드 ex) @Environment(\.managedObjectContext)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
