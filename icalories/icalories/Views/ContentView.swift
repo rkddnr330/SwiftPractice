@@ -23,7 +23,7 @@ struct ContentView: View {
                 
                 List{
                     ForEach(food){ food in
-                        NavigationLink(destination: Text("\(food.calories)")){
+                        NavigationLink(destination: EditFoodView(food: food)){
                             VStack(alignment: .leading, spacing: 6){
                                 HStack{
                                     HStack{
@@ -84,6 +84,7 @@ struct ContentView: View {
     func totalCaloriesToday() -> Double {
         var caloriesToday: Double = 0
         for item in food {
+            ///이 구문 자체가 item의 date가 오늘이냐?! 를 판단해주는 아주 편한 코드이다. 필요할 때 갖다 쓰기
             if Calendar.current.isDateInToday(item.date!) {
                 caloriesToday += item.calories
             }

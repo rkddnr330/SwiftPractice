@@ -15,6 +15,7 @@
 		77AEB10A2831EFF800669CD4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AEB1092831EFF800669CD4 /* DataController.swift */; };
 		77AEB10F2832616200669CD4 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AEB10E2832616200669CD4 /* AddFoodView.swift */; };
 		77AEB111283266BB00669CD4 /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AEB110283266BB00669CD4 /* TimeFormatting.swift */; };
+		77AEB11328333AB900669CD4 /* EditFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AEB11228333AB900669CD4 /* EditFoodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		77AEB1092831EFF800669CD4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		77AEB10E2832616200669CD4 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 		77AEB110283266BB00669CD4 /* TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatting.swift; sourceTree = "<group>"; };
+		77AEB11228333AB900669CD4 /* EditFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFoodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,9 @@
 		77AEB10D2832615100669CD4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				77AEB10E2832616200669CD4 /* AddFoodView.swift */,
 				77AEB0F72831E5D100669CD4 /* ContentView.swift */,
+				77AEB10E2832616200669CD4 /* AddFoodView.swift */,
+				77AEB11228333AB900669CD4 /* EditFoodView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				77AEB10A2831EFF800669CD4 /* DataController.swift in Sources */,
 				77AEB0F62831E5D100669CD4 /* icaloriesApp.swift in Sources */,
 				77AEB1062831ECB800669CD4 /* FoodModel.xcdatamodeld in Sources */,
+				77AEB11328333AB900669CD4 /* EditFoodView.swift in Sources */,
 				77AEB111283266BB00669CD4 /* TimeFormatting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
