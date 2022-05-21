@@ -29,6 +29,26 @@ extension Bundle {
         
         return loadedData
     }
+    
+    func FetchData<T: Decodable>(url: String, model: T.Type, completion: @escaping(T) -> (), failure: @escaping(Error) -> ()) {
+        guard let url = URL(string: url) else {return}
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                //if there is an error, return the error
+                if let error = error { failure(error)}
+                return }
+            
+            do {
+                let serverData = try JSONDecoder().decode(T.self, from: data)
+                //Return the data successfully from the server
+                completion((serverData))
+            } catch {
+                //if there is an error, return the error
+                failure(error)
+            }
+        }.resume()
+    }
 }
 ///decode 함수의 전체적인 흐름
 ///let url = self.url(forResource: file, withExtension: nil)
