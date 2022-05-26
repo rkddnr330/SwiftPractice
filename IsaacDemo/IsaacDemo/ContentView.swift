@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    ///@State로 선언 : 여기에 words의 Source of Truth가 있다.
     @State private var words = [String]()
     
     var body: some View {
         NavigationView {
-            List(words, id:\.self) { item in
-                Text(item)
-                    .padding()
+            List(words, id:\.self) { word in
+                NavigationLink(destination: WordDetailView(word :$words[0])) {
+                    Text(word)
+                        .padding()
+                }
             }
             .navigationTitle("Words List")
             .task{
