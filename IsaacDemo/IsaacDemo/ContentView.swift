@@ -10,25 +10,26 @@ import SwiftUI
 struct ContentView: View {
     ///@State로 선언 : 여기에 words의 Source of Truth가 있다.
     @State private var words = [String]()
+    @Binding var wordsCount: Double
     
     var body: some View {
-        NavigationView {
+
             List(words, id:\.self) { word in
-                NavigationLink(destination: WordDetailView(word :$words[0])) {
+               
                     Text(word)
                         .padding()
-                }
+                
             }
-            .navigationTitle("Words List")
+            .navigationTitle("List of \(Int(wordsCount)) Words")
             .task{
-                await fetchData()
+                await fetchData(Int(wordsCount))
             }
-        }
+        
     }
     
-    func fetchData() async {
+    func fetchData(_ wordsCount: Int) async {
         //create url
-        guard let url = URL(string: "https://random-word-api.herokuapp.com/word?number=20") else {
+        guard let url = URL(string: "https://random-word-api.herokuapp.com/word?number=\(wordsCount)") else {
             print("url is invalid!")
             return
         }
@@ -47,8 +48,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
