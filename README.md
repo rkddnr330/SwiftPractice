@@ -6,3 +6,5 @@ This is Swift Practice Repo that I studied
 <p>✔️<a href="https://www.youtube.com/watch?v=gGM_Qn3CUfQ&list=PLrJuPV6DI-2PSwwA_BIqq5rx1Xz-95hj0&index=6">BudgetApp</a> (5/17): Core Data + MVVM pattern</p>
 <p>✔️<a href="https://www.youtube.com/watch?v=gGM_Qn3CUfQ&list=PLrJuPV6DI-2PSwwA_BIqq5rx1Xz-95hj0&index=6">PokemonDemo</a> (5/18)(https://www.youtube.com/watch?v=wwOOwhsPKpU) : MVVM pattern</p>
 <p>✔️<a href="https://www.youtube.com/watch?v=Y-GxKhLRGyE">APITutorial1</a> (5/25) : SwiftUI API / JSON / Networking tutorial</p>
+<p>✔️DataFlowStudy (5/26) : [문화센터 - 아이작 1기] 공부 모음</p>
+<p>✔️IsaacDemo (5/26) : [문화센터 - 아이작 1기] 어플 작업</p>
