@@ -12,6 +12,7 @@
 		7754CDD1283F16C1008A205F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7754CDD0283F16C1008A205F /* Assets.xcassets */; };
 		7754CDD4283F16C1008A205F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7754CDD3283F16C1008A205F /* Preview Assets.xcassets */; };
 		7754CE1D2840BF8F008A205F /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7754CE1C2840BF8F008A205F /* IntroView.swift */; };
+		7754CE2128410CE5008A205F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7754CE2028410CE5008A205F /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7754CDD0283F16C1008A205F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7754CDD3283F16C1008A205F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7754CE1C2840BF8F008A205F /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		7754CE2028410CE5008A205F /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				7754CDCC283F16BF008A205F /* IsaacDemoApp.swift */,
 				7754CDCE283F16BF008A205F /* ContentView.swift */,
 				7754CE1C2840BF8F008A205F /* IntroView.swift */,
+				7754CE2028410CE5008A205F /* EditView.swift */,
 				7754CDD0283F16C1008A205F /* Assets.xcassets */,
 				7754CDD2283F16C1008A205F /* Preview Content */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				7754CE1D2840BF8F008A205F /* IntroView.swift in Sources */,
 				7754CDCF283F16BF008A205F /* ContentView.swift in Sources */,
+				7754CE2128410CE5008A205F /* EditView.swift in Sources */,
 				7754CDCD283F16BF008A205F /* IsaacDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

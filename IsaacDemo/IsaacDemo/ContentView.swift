@@ -11,6 +11,7 @@ struct ContentView: View {
     ///@State로 선언 : 여기에 words의 Source of Truth가 있다.
     @State private var words = [String]()
     @Binding var wordsCount: Double
+    @State private var isShowing = false
     
     var body: some View {
 
@@ -21,6 +22,43 @@ struct ContentView: View {
                 
             }
             .navigationTitle("List of \(Int(wordsCount)) Words")
+            .toolbar{
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(action: {
+                        isShowing.toggle()
+                    }) {
+                        Text("EDIT")
+                    }
+                    .sheet(isPresented: $isShowing) {
+                        VStack {
+                            Text("단어 개수: \(Int(wordsCount))")
+                            Slider(value: $wordsCount, in: 0...15, step: 1)
+                            
+                            Button (action: {
+                                isShowing.toggle()
+                                
+                            }) {
+//                                NavigationLink(destination: ContentView(wordsCount: $wordsCount)){
+                                    Text("단어 확인")
+//                                }
+                            }
+                        }
+                    }
+                    .task {
+                        await fetchData(Int(wordsCount))
+                    }
+//                    .toolbar{
+//                        ToolbarItem(placement: .confirmationAction) {
+//                            Button(action: {
+//                                isShowing.toggle()
+//                            }) {
+//                                Text("DONE")
+//                            }
+//                        }
+//                    }
+                    
+                    }
+            }
             .task{
                 await fetchData(Int(wordsCount))
             }
@@ -49,7 +87,8 @@ struct ContentView: View {
 }
 
 //struct ContentView_Previews: PreviewProvider {
+//    @Binding var wordsCount: Double
 //    static var previews: some View {
-//        ContentView()
+//        ContentView(wordsCount: wordsCount)
 //    }
 //}
