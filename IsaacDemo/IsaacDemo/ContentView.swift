@@ -28,16 +28,22 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $isShowing) {
                     VStack {
-                        Text("단어 개수: \(Int(wordsCount))")
-                        Slider(value: $wordsCount, in: 0...15, step: 1)
-                        Button (action: {
-                            print(wordsCount)
-                            Task {
-                                await fetchData(Int(wordsCount))
+                        Text("단어 개수를 수정해봅시다 🧐")
+//                        Slider(value: $wordsCount, in: 0...15, step: 1)
+                        HStack {
+                            TextField("1이상 15이하 숫자 입력", value: $wordsCount, format: .number)
+                                .textFieldStyle(.roundedBorder)
+                                .frame(width: 200, alignment: .center)
+                                .padding()
+                            Button (action: {
+                                print(wordsCount)
+                                Task {
+                                    await fetchData(Int(wordsCount))
+                                }
+                                isShowing.toggle()
+                            }) {
+                                Text("단어 확인")
                             }
-                            isShowing.toggle()
-                        }) {
-                            Text("단어 확인")
                         }
                     }
                 }

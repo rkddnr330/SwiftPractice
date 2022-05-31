@@ -35,7 +35,7 @@ struct IntroView: View {
                             }
                         }
                     }
-                    .alert("1이상 15 이하의 단어만 입력해주세요!", isPresented: $showingAlert) {
+                    .alert("1이상 15 이하의 개수만 입력해주세요!", isPresented: $showingAlert) {
                         Button("확인", role: .cancel) { }
                     }
                 }
