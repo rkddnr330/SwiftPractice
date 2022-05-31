@@ -13,14 +13,14 @@ struct IntroView: View {
         NavigationView {
             VStack {
                 Text("단어 개수: \(Int(wordsCount))")
+                    .font(.title)
                 Slider(value: $wordsCount, in: 0...15, step: 1)
-                
+//                TextField("단어 개수를 입력하세요", text: $wordsCount, format: .number)
                 Button (action: {}) {
                     NavigationLink(destination: ContentView(wordsCount: $wordsCount)){
                         Text("단어 확인")
                     }
                 }
-                
             }
         }
     }

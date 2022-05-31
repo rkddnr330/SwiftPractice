@@ -14,75 +14,58 @@ struct ContentView: View {
     @State private var isShowing = false
     
     var body: some View {
-
-            List(words, id:\.self) { word in
-               
-                    Text(word)
-                        .padding()
-                
-            }
-            .navigationTitle("List of \(Int(wordsCount)) Words")
-            .toolbar{
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(action: {
-                        isShowing.toggle()
-                    }) {
-                        Text("EDIT")
-                    }
-                    .sheet(isPresented: $isShowing) {
-                        VStack {
-                            Text("단어 개수: \(Int(wordsCount))")
-                            Slider(value: $wordsCount, in: 0...15, step: 1)
-                            
-                            Button (action: {
-                                isShowing.toggle()
-                                
-                            }) {
-//                                NavigationLink(destination: ContentView(wordsCount: $wordsCount)){
-                                    Text("단어 확인")
-//                                }
+        List(words, id:\.self) { word in
+            Text(word)
+                .padding()
+        }
+        .navigationTitle("List of \(Int(wordsCount)) Words")
+        .toolbar{
+            ToolbarItem(placement: .confirmationAction) {
+                Button(action: {
+                    isShowing.toggle()
+                }) {
+                    Text("EDIT")
+                }
+                .sheet(isPresented: $isShowing) {
+                    VStack {
+                        Text("단어 개수: \(Int(wordsCount))")
+                        Slider(value: $wordsCount, in: 0...15, step: 1)
+                        Button (action: {
+                            print(wordsCount)
+                            Task {
+                                await fetchData(Int(wordsCount))
                             }
+                            isShowing.toggle()
+                        }) {
+                            Text("단어 확인")
                         }
                     }
-                    .task {
-                        await fetchData(Int(wordsCount))
-                    }
-//                    .toolbar{
-//                        ToolbarItem(placement: .confirmationAction) {
-//                            Button(action: {
-//                                isShowing.toggle()
-//                            }) {
-//                                Text("DONE")
-//                            }
-//                        }
-//                    }
-                    
-                    }
+                }
             }
-            .task{
-                await fetchData(Int(wordsCount))
-            }
-        
+        }
+        .task{
+            await fetchData(Int(wordsCount))
+        }
     }
     
     func fetchData(_ wordsCount: Int) async {
+        print("fetchData function call")
         //create url
         guard let url = URL(string: "https://random-word-api.herokuapp.com/word?number=\(wordsCount)") else {
             print("url is invalid!")
             return
         }
-        
-        //fetch the data from url
+        //fetch the data from url (URLSession)
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            //decode that data
+            //decode that data (JSONDecoder)
             if let decodedResponse = try? JSONDecoder().decode([String].self, from: data) {
+                /// Decoding한 데이터를 words에 선언
                 words = decodedResponse
             }
         } catch {
             print("data is invalid!")
         }
-        
     }
 }
 
