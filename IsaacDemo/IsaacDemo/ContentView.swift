@@ -14,6 +14,7 @@ struct ContentView: View {
     @ObservedObject var words = WordViewModel()
     @Binding var wordsCount: Double
     @State private var isShowing = false
+    @State private var showingAlert = false
     
     var body: some View {
         List(words.wordList, id:\.self) { word in
@@ -37,13 +38,20 @@ struct ContentView: View {
                                 .frame(width: 200, alignment: .center)
                                 .padding()
                             Button (action: {
-                                print(wordsCount)
-                                Task {
-                                    await words.fetchData(Int(wordsCount))
+                                if wordsCount < 1 || wordsCount > 15 {
+                                    showingAlert = true
+                                } else {
+                                    Task {
+                                        await words.fetchData(Int(wordsCount))
+                                    }
+                                    isShowing.toggle()
                                 }
-                                isShowing.toggle()
+                            
                             }) {
                                 Text("단어 확인")
+                            }
+                            .alert("1이상 15 이하의 개수만 입력해주세요!", isPresented: $showingAlert) {
+                                Button("확인", role: .cancel) { }
                             }
                         }
                     }
