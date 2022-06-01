@@ -10,12 +10,17 @@ import AuthenticationServices
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ///SignInWithAppleButton이라고 따로 제공
         SignInWithAppleButton(
             .signUp,    ///레이블. 어떤 문구 띄울지
             onRequest: configure,   ///클릭시 발동되는 함수 호출
             onCompletion: handle    ///다음 과정으로 넘어갈 때 (ASAuthorization 또는 Error) 발동되는 함수 호출
+        )
+        .signInWithAppleButtonStyle(
+            colorScheme == .dark ? .white : .black
         )
         .frame(height: 45)
         .padding()
@@ -33,5 +38,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
     }
 }
