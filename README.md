@@ -10,4 +10,4 @@ This is Swift Practice Repo that I studied
 <p>✔️IsaacDemo (5/26) : [문화센터 - 아이작 1기] 어플 작업</p>
 <p><a href="https://www.youtube.com/watch?v=O2FVDzoAB34&list=PLrJuPV6DI-2PSwwA_BIqq5rx1Xz-95hj0&index=9">✔️SIWA</a> (6/1) : Sign In with Apple 구현</p>
 <p>✔️MC2Demo (6/2) : Apple Developer Academy MC2 연습</p>
-<p>✔️ScholarshipDemo (6/2) : 사이드 프로젝트 장학금 알림 어플</p>
+<p>✔️ScholarshipDemo (6/2) : 사이드 프로젝트 장학금 알림 어플 </p>
