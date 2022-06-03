@@ -11,6 +11,7 @@
 		77DA40292848A22C00F82CD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA40282848A22C00F82CD9 /* ContentView.swift */; };
 		77DA402B2848A22F00F82CD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA402A2848A22F00F82CD9 /* Assets.xcassets */; };
 		77DA402E2848A22F00F82CD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA402D2848A22F00F82CD9 /* Preview Assets.xcassets */; };
+		77DA4037284A3BE900F82CD9 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA4036284A3BE900F82CD9 /* Data.swift */; };
 		D93C25EFD4A41FF630045FE2 /* Pods_ScholarshipDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F5B02E91885FB3ED4D65B45 /* Pods_ScholarshipDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		77DA40282848A22C00F82CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		77DA402A2848A22F00F82CD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77DA402D2848A22F00F82CD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		77DA4036284A3BE900F82CD9 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		AE9B72D505D36128D54E5E20 /* Pods-ScholarshipDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScholarshipDemo.debug.xcconfig"; path = "Target Support Files/Pods-ScholarshipDemo/Pods-ScholarshipDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,7 +45,6 @@
 				AE9B72D505D36128D54E5E20 /* Pods-ScholarshipDemo.debug.xcconfig */,
 				1880D155D56AEED2DF4397D7 /* Pods-ScholarshipDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -70,6 +71,7 @@
 			children = (
 				77DA40262848A22C00F82CD9 /* ScholarshipDemoApp.swift */,
 				77DA40282848A22C00F82CD9 /* ContentView.swift */,
+				77DA4036284A3BE900F82CD9 /* Data.swift */,
 				77DA402A2848A22F00F82CD9 /* Assets.xcassets */,
 				77DA402C2848A22F00F82CD9 /* Preview Content */,
 			);
@@ -206,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DA4037284A3BE900F82CD9 /* Data.swift in Sources */,
 				77DA40292848A22C00F82CD9 /* ContentView.swift in Sources */,
 				77DA40272848A22C00F82CD9 /* ScholarshipDemoApp.swift in Sources */,
 			);
