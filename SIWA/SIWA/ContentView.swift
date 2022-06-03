@@ -33,19 +33,25 @@ struct AppleUser: Codable {
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
+    @State private var isGo = false
     
     var body: some View {
-        ///SignInWithAppleButton이라고 따로 제공
-        SignInWithAppleButton(
-            .signUp,    ///레이블. 어떤 문구 띄울지
-            onRequest: configure,   ///클릭시 발동되는 함수 호출
-            onCompletion: handle    ///다음 과정으로 넘어갈 때 (ASAuthorization 또는 Error) 발동되는 함수 호출. sheet가 pop up 되고 필요한 과정이 진행된다
-        )
-        .signInWithAppleButtonStyle(
-            colorScheme == .dark ? .white : .black
-        )
-        .frame(height: 45)
-        .padding()
+        NavigationView {
+            NavigationLink(destination: MainView(), isActive: $isGo)
+            {
+                ///SignInWithAppleButton이라고 따로 제공
+                SignInWithAppleButton(
+                    .signUp,    ///레이블. 어떤 문구 띄울지
+                    onRequest: configure,   ///클릭시 발동되는 함수 호출
+                    onCompletion: handle    ///다음 과정으로 넘어갈 때 (ASAuthorization 또는 Error) 발동되는 함수 호출. sheet가 pop up 되고 필요한 과정이 진행된다
+                )
+                .signInWithAppleButtonStyle(
+                    colorScheme == .dark ? .white : .black
+                )
+                .frame(height: 45)
+                .padding()
+            }
+        }
     }
     
     ///Button에서 onRequest시 우리가 구성할 행동들 규정
@@ -69,6 +75,8 @@ struct ContentView: View {
                     
                     UserDefaults.standard.setValue(appleUserData, forKey: appleUser.userID)
                     print("saved apple user", appleUser)
+                    isGo = true
+                    
                 ///처음 회원가입 하고 나서 로그인 할 때 어떻게 되는지 보여주는 부분 (처음이 아닌 경우. Sign Up이 완료된 경우)
                 } else {
                     print("missing some fields", appleIdCredentials.email, appleIdCredentials.fullName, appleIdCredentials.user)

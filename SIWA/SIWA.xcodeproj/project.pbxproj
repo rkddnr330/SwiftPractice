@@ -11,6 +11,7 @@
 		77DA3FF42847479F00F82CD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA3FF32847479F00F82CD9 /* ContentView.swift */; };
 		77DA3FF6284747A100F82CD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA3FF5284747A100F82CD9 /* Assets.xcassets */; };
 		77DA3FF9284747A100F82CD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA3FF8284747A100F82CD9 /* Preview Assets.xcassets */; };
+		77DA40352849E6BE00F82CD9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA40342849E6BE00F82CD9 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		77DA3FF5284747A100F82CD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77DA3FF8284747A100F82CD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		77DA3FFF284747CC00F82CD9 /* SIWA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SIWA.entitlements; sourceTree = "<group>"; };
+		77DA40342849E6BE00F82CD9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				77DA3FFF284747CC00F82CD9 /* SIWA.entitlements */,
 				77DA3FF12847479F00F82CD9 /* SIWAApp.swift */,
 				77DA3FF32847479F00F82CD9 /* ContentView.swift */,
+				77DA40342849E6BE00F82CD9 /* MainView.swift */,
 				77DA3FF5284747A100F82CD9 /* Assets.xcassets */,
 				77DA3FF7284747A100F82CD9 /* Preview Content */,
 			);
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77DA3FF42847479F00F82CD9 /* ContentView.swift in Sources */,
+				77DA40352849E6BE00F82CD9 /* MainView.swift in Sources */,
 				77DA3FF22847479F00F82CD9 /* SIWAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
