@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftSoup
+import UIKit
 
 struct ContentView: View {
     var body: some View {
@@ -29,7 +30,7 @@ struct ContentView: View {
             
             let title: Elements = try doc.select("stitle").select("a")
             
-            carLabel = title
+//            carLabel = title
             print(carLabel)
             
         } catch let error {
@@ -39,8 +40,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
