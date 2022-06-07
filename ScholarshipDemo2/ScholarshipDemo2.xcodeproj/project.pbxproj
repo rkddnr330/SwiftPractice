@@ -90,10 +90,10 @@
 		77E6FBC3284F63F2007342C6 /* Articles */ = {
 			isa = PBXGroup;
 			children = (
-				77E6FBC1284F63EA007342C6 /* Article.swift */,
 				77E6FBC4284F6414007342C6 /* ArticleCell.swift */,
 				77E6FBC6284F6429007342C6 /* ArticleListView.swift */,
 				77E6FBC8284F643D007342C6 /* DataService.swift */,
+				77E6FBC1284F63EA007342C6 /* Article.swift */,
 				77E6FBCC284F6466007342C6 /* DataFormatter+Extensions.swift */,
 				77E6FBCA284F644F007342C6 /* Data+Extensions.swift */,
 			);

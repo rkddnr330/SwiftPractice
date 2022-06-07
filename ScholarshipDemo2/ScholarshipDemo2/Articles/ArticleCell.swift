@@ -39,8 +39,8 @@ struct ArticleCell: View {
     }
 }
 
-struct ArticleCell_Previews: PreviewProvider {
-    static var previews: some View {
-        ArticleCell(article: Article(title: "Deneme", url: URL(string: "https://www.google.com")!, publishDate: .now), isDateToday: true)
-    }
-}
+//struct ArticleCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ArticleCell(article: Article(title: "Deneme", url: URL(string: "https://www.google.com")!, publishDate: .now), isDateToday: true)
+//    }
+//}
