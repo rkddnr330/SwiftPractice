@@ -62,7 +62,7 @@ struct ArticleListView: View {
             }
             .disableAutocorrection(true)
             .onAppear(perform: fetchData)
-            .navigationTitle(Text("Articles"))
+            .navigationTitle(Text("장학금 목록"))
         }
     }
     
