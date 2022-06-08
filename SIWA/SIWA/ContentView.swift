@@ -37,8 +37,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            NavigationLink(destination: MainView(), isActive: $isGo)
-            {
+//            NavigationLink(destination: MainView(), isActive: $isGo)
+//            {
                 ///SignInWithAppleButton이라고 따로 제공
                 SignInWithAppleButton(
                     .signUp,    ///레이블. 어떤 문구 띄울지
@@ -50,7 +50,7 @@ struct ContentView: View {
                 )
                 .frame(height: 45)
                 .padding()
-            }
+//            }
         }
     }
     
