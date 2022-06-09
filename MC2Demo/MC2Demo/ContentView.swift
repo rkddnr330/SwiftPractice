@@ -15,9 +15,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                List(0 ..< roomCount) { num in
-                    Text("스터디\(num)")
-                        .padding()
+                List(0 ..< roomCount, id:\.self) { num in
+                    NavigationLink( destination: DetailView()){
+                        Text("스터디\(num)")
+                            .padding()
+                    }
+                    
                 }
                 
                 Spacer()

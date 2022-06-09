@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7757BF9428518F42000182E5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757BF9328518F42000182E5 /* DetailView.swift */; };
+		7757BF962851952F000182E5 /* DetailNFCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757BF952851952F000182E5 /* DetailNFCView.swift */; };
+		7757BF982851957C000182E5 /* DetailStandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757BF972851957C000182E5 /* DetailStandingView.swift */; };
+		7757BF9A28519592000182E5 /* DetailInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757BF9928519592000182E5 /* DetailInformationView.swift */; };
 		77DA400D2847985900F82CD9 /* MC2DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA400C2847985900F82CD9 /* MC2DemoApp.swift */; };
 		77DA400F2847985900F82CD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA400E2847985900F82CD9 /* ContentView.swift */; };
 		77DA40112847985A00F82CD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA40102847985A00F82CD9 /* Assets.xcassets */; };
@@ -14,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7757BF9328518F42000182E5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		7757BF952851952F000182E5 /* DetailNFCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNFCView.swift; sourceTree = "<group>"; };
+		7757BF972851957C000182E5 /* DetailStandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStandingView.swift; sourceTree = "<group>"; };
+		7757BF9928519592000182E5 /* DetailInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInformationView.swift; sourceTree = "<group>"; };
 		77DA40092847985900F82CD9 /* MC2Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DA400C2847985900F82CD9 /* MC2DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2DemoApp.swift; sourceTree = "<group>"; };
 		77DA400E2847985900F82CD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +40,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7757BF9B2851971F000182E5 /* DetailCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				7757BF972851957C000182E5 /* DetailStandingView.swift */,
+				7757BF952851952F000182E5 /* DetailNFCView.swift */,
+				7757BF9928519592000182E5 /* DetailInformationView.swift */,
+			);
+			path = DetailCarousel;
+			sourceTree = "<group>";
+		};
 		77DA40002847985900F82CD9 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +71,8 @@
 			children = (
 				77DA400C2847985900F82CD9 /* MC2DemoApp.swift */,
 				77DA400E2847985900F82CD9 /* ContentView.swift */,
+				7757BF9328518F42000182E5 /* DetailView.swift */,
+				7757BF9B2851971F000182E5 /* DetailCarousel */,
 				77DA40102847985A00F82CD9 /* Assets.xcassets */,
 				77DA40122847985A00F82CD9 /* Preview Content */,
 			);
@@ -138,7 +158,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				77DA400F2847985900F82CD9 /* ContentView.swift in Sources */,
+				7757BF982851957C000182E5 /* DetailStandingView.swift in Sources */,
+				7757BF9428518F42000182E5 /* DetailView.swift in Sources */,
 				77DA400D2847985900F82CD9 /* MC2DemoApp.swift in Sources */,
+				7757BF9A28519592000182E5 /* DetailInformationView.swift in Sources */,
+				7757BF962851952F000182E5 /* DetailNFCView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
