@@ -16,10 +16,19 @@ struct ContentView: View {
     @State private var isShowing = false
     @State private var showingAlert = false
     
+    @State private var isShowingActionSheet = false
+    
     var body: some View {
         List(words.wordList, id:\.self) { word in
-            Text(word)
-                .padding()
+            Button {
+                isShowingActionSheet = true
+            } label: {
+                Text(word)
+                    .padding()
+            }
+
+//            Text(word)
+//                .padding()
         }
         .navigationTitle("List of \(Int(wordsCount)) Words")
         .toolbar{
@@ -60,6 +69,15 @@ struct ContentView: View {
         }
         .task{
             await words.fetchData(Int(wordsCount))
+        }
+        .actionSheet(isPresented: $isShowingActionSheet) {
+            ActionSheet(
+                title: Text("title"),
+                buttons: [
+                    .destructive(Text("destructive")){ print("touch") },
+                    .cancel()
+                ]
+            )
         }
     }
 }
