@@ -94,6 +94,10 @@ struct ContentView: View {
                     else { return }
                     
                     print(appleUser)
+                    print(appleUser.email)
+                    print(appleUser.userID)
+                    print(appleUser.lastName)
+                    print(appleUser.firstName)
                 }
             
             default:
