@@ -13,6 +13,7 @@ struct DetailView: View {
     var body: some View {
         NavigationView{
             VStack {
+                ///Carousel : TabView의 Style 중 하나
                 TabView(selection: $selectedTab){
                     DetailStandingView()
                         .tag(0)
@@ -22,10 +23,12 @@ struct DetailView: View {
                         .tag(2)
                 }
                 .frame(width: 340, height: 600)
+//                .tabViewStyle(PageTabViewStyle())
                 .tabViewStyle(PageTabViewStyle())
                 .background(Color.gray)
                 .cornerRadius(15)
             }
+            .padding()
             .navigationBarHidden(true)
         }
     }
