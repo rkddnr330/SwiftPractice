@@ -31,6 +31,7 @@ struct ArticleListView: View {
                     }
                 } header: {
                     Text("Today")
+                        .foregroundColor(Color("SubColor"))
                 } footer: {
                     if searchResults.filter({$0.publishDate.isInToday(date: today)}).count > 0{
                         Text("\(todaysResults().count) Article(s)")
@@ -48,6 +49,7 @@ struct ArticleListView: View {
                     }
                 } header: {
                     Text(oldPostsHeader)
+                        .foregroundColor(Color("SubColor"))
                 } footer: {
                     if previousResults().count == 0{
                         
@@ -62,7 +64,7 @@ struct ArticleListView: View {
             }
             .disableAutocorrection(true)
             .onAppear(perform: fetchData)
-            .navigationTitle(Text("장학금 목록"))
+            .navigationTitle(Text("윤기츈의 장하금은?"))
         }
     }
     
@@ -99,8 +101,8 @@ struct ArticleListView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ArticleListView_Previews: PreviewProvider {
+    static var previews: some View {
+        ArticleListView()
+    }
+}

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		603CA6BE351A19973E1621D1 /* Pods_ScholarshipDemo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A6567CB89C2113AB9BB659 /* Pods_ScholarshipDemo2.framework */; };
+		772C291B285B557A0027C97D /* ArticleListVieww.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772C291A285B557A0027C97D /* ArticleListVieww.swift */; };
+		77B50CDC2862FDA400254D34 /* major.json in Sources */ = {isa = PBXBuildFile; fileRef = 77B50CDB2862FDA400254D34 /* major.json */; };
+		77B50CDE286303EA00254D34 /* MoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B50CDD286303EA00254D34 /* MoneyView.swift */; };
 		77E6FBB4284F6223007342C6 /* ScholarshipDemo2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6FBB3284F6223007342C6 /* ScholarshipDemo2App.swift */; };
 		77E6FBB6284F6223007342C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6FBB5284F6223007342C6 /* ContentView.swift */; };
 		77E6FBB8284F6225007342C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E6FBB7284F6225007342C6 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		4466982F160822948429EFDB /* Pods-ScholarshipDemo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScholarshipDemo2.release.xcconfig"; path = "Target Support Files/Pods-ScholarshipDemo2/Pods-ScholarshipDemo2.release.xcconfig"; sourceTree = "<group>"; };
+		772C291A285B557A0027C97D /* ArticleListVieww.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListVieww.swift; sourceTree = "<group>"; };
+		77B50CDB2862FDA400254D34 /* major.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = major.json; sourceTree = "<group>"; };
+		77B50CDD286303EA00254D34 /* MoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyView.swift; sourceTree = "<group>"; };
 		77E6FBB0284F6223007342C6 /* ScholarshipDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScholarshipDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E6FBB3284F6223007342C6 /* ScholarshipDemo2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScholarshipDemo2App.swift; sourceTree = "<group>"; };
 		77E6FBB5284F6223007342C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +55,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772C2917285B3E490027C97D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				77E6FBC8284F643D007342C6 /* DataService.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		772C2918285B3E580027C97D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77E6FBC1284F63EA007342C6 /* Article.swift */,
+				77B50CDB2862FDA400254D34 /* major.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		772C2919285B3E6A0027C97D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				77E6FBC4284F6414007342C6 /* ArticleCell.swift */,
+				77E6FBC6284F6429007342C6 /* ArticleListView.swift */,
+				772C291A285B557A0027C97D /* ArticleListVieww.swift */,
+				77B50CDD286303EA00254D34 /* MoneyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		77E6FBA7284F6223007342C6 = {
 			isa = PBXGroup;
 			children = (
@@ -90,10 +124,9 @@
 		77E6FBC3284F63F2007342C6 /* Articles */ = {
 			isa = PBXGroup;
 			children = (
-				77E6FBC4284F6414007342C6 /* ArticleCell.swift */,
-				77E6FBC6284F6429007342C6 /* ArticleListView.swift */,
-				77E6FBC8284F643D007342C6 /* DataService.swift */,
-				77E6FBC1284F63EA007342C6 /* Article.swift */,
+				772C2919285B3E6A0027C97D /* Views */,
+				772C2917285B3E490027C97D /* ViewModel */,
+				772C2918285B3E580027C97D /* Model */,
 				77E6FBCC284F6466007342C6 /* DataFormatter+Extensions.swift */,
 				77E6FBCA284F644F007342C6 /* Data+Extensions.swift */,
 			);
@@ -234,7 +267,10 @@
 				77E6FBC5284F6414007342C6 /* ArticleCell.swift in Sources */,
 				77E6FBCB284F644F007342C6 /* Data+Extensions.swift in Sources */,
 				77E6FBC7284F6429007342C6 /* ArticleListView.swift in Sources */,
+				77B50CDC2862FDA400254D34 /* major.json in Sources */,
+				772C291B285B557A0027C97D /* ArticleListVieww.swift in Sources */,
 				77E6FBB6284F6223007342C6 /* ContentView.swift in Sources */,
+				77B50CDE286303EA00254D34 /* MoneyView.swift in Sources */,
 				77E6FBC9284F643D007342C6 /* DataService.swift in Sources */,
 				77E6FBB4284F6223007342C6 /* ScholarshipDemo2App.swift in Sources */,
 				77E6FBCD284F6466007342C6 /* DataFormatter+Extensions.swift in Sources */,
