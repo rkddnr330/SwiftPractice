@@ -12,15 +12,15 @@ import SwiftUI
 class DataService: ObservableObject{
 
     @Published var articleList = [Article]()
+    @Published var officialList = [Article]()
 
     ///긁어올 URL 주소
     let baseURL = URL(string: "https://cse.pusan.ac.kr/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMSUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2")
-//https://cse.pusan.ac.kr/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMSUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2
-//https://cse.pusan.ac.kr/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMiUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2
-//https://cse.pusan.ac.kr/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMyUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2
-
+    let officialURL = URL(string: "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN095")
+    
     func fetchArticles(){
         articleList.removeAll()
+        officialList.removeAll()
 
 //        이 코드의 의미 : 위에서 선언한 baseURL 뒤에 articles라고 주소창 더 붙임 == 새로운 주소창이 된다는 의미
 //        그니까 받아오는 url이 https://www.swiftbysundell.com/articles 가 되는 거임
@@ -28,6 +28,7 @@ class DataService: ObservableObject{
 //        let articleURL = baseURL?.appendingPathComponent("/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMSUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2")
 
         let articleURL = baseURL
+        let officialURL = officialURL
         print("🥶\(articleURL)")
 
         if let articleURL = articleURL{
@@ -75,6 +76,54 @@ class DataService: ObservableObject{
                 print(error)
             }
         }
+        ///학교 공홈
+        if let officialURL = officialURL{
+            do {
+                let websiteString = try String(contentsOf: officialURL)
+                print("🤢\(websiteString)")
+                let document = try SwiftSoup.parse(websiteString)
+                print("👤🚨🚨🚨🚨🚨🚨\(document)")
+
+//                let articles = try document.getElementsByClass("item-list").select("article")
+                ///artclTdTitle 이라는 클래스를 가진 코드 불러오기
+                let articles = try document.getElementsByClass("stitle")
+
+                print("👿\(articles)")  //SwiftSoup.Elements
+                for i in articles {
+                    print("💂🏻\(i)")
+                }
+                for article in articles{
+                    let title = try article.select("a").first()?.text(trimAndNormaliseWhitespace: true) ?? ""
+                    
+                    print("😀\(title)")     //진짜 title 나와야 함
+                    
+                    guard let baseURL = baseURL else {
+                        return
+                    }
+                    
+                    let url = try baseURL.appendingPathComponent(article.select("a").attr("href"))
+                    let dateString = try article.select("div").select("span").text()
+                        .replacingOccurrences(of: "Published on ", with: "")
+                        .replacingOccurrences(of: "Remastered on ", with: "")
+                        .replacingOccurrences(of: "Answered on ", with: "")
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    let formatter = DateFormatter(dateFormat: "dd MMM yyyy")
+                    let date = Calendar.current.startOfDay(for: formatter.date(from: dateString) ?? Date.now)
+                    
+                    let post = Article(title: title, url: url, publishDate: date)
+                    if post.title.contains("장학") {
+                        self.officialList.append(post)
+                    }
+                }
+            }
+
+            catch let error {
+                print(error)
+            }
+        }
+
+        
 
     }
 }
