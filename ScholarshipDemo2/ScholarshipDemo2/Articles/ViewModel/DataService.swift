@@ -37,7 +37,7 @@ class DataService: ObservableObject{
                 let websiteString = try String(contentsOf: articleURL)
                 print("🤢\(websiteString)")
                 let document = try SwiftSoup.parse(websiteString)
-                print("👤🚨🚨🚨🚨🚨🚨\(document)")
+                print("👤🚨🚨🚨🚨🚨🚨\(document)") //<!doctype html>
 
 //                let articles = try document.getElementsByClass("item-list").select("article")
                 ///artclTdTitle 이라는 클래스를 가진 코드 불러오기
@@ -62,6 +62,9 @@ class DataService: ObservableObject{
                         .replacingOccurrences(of: "Remastered on ", with: "")
                         .replacingOccurrences(of: "Answered on ", with: "")
                         .trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    let dateStringa = try article.select("a").first()?.text(trimAndNormaliseWhitespace: true) ?? ""
+                    print("🔥\(dateStringa)")
                     
                     let formatter = DateFormatter(dateFormat: "dd MMM yyyy")
                     let date = Calendar.current.startOfDay(for: formatter.date(from: dateString) ?? Date.now)
