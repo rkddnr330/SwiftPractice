@@ -64,20 +64,20 @@ struct MoneyView: View {
 //                    ForEach(todaysResults()) { article in
 //                        ArticleCell(article: article, isDateToday: true)
 //                    }
-                    ForEach(data.articleList) { article in
+                    ForEach(searchResults) { article in
                         ArticleCelll(article: article)
                     }
                 } header: {
                     Text("학과 이름")
                         .foregroundColor(Color("SubColor"))
                 } footer: {
-                    Text("\(data.articleList.count) Article(s)")
+                    Text("\(searchResults.count) Article(s)")
                         .background(.clear)
                 }
                 
                 ///다른 학과 섹션이 되겠지. 또는 학교 공홈 공지사항
                 Section {
-                    ForEach(data.officialList) { article in
+                    ForEach(searchOfficialResults) { article in
                         ArticleCelll(article: article)
                     }
                     
@@ -85,7 +85,7 @@ struct MoneyView: View {
                     Text("학교 공홈")
                         .foregroundColor(Color("SubColor"))
                 } footer: {
-                    Text("\(data.officialList.count) Article(s)")
+                    Text("\(searchOfficialResults.count) Article(s)")
                     
                 }
             }
@@ -104,6 +104,18 @@ struct MoneyView: View {
             return data.articleList
         } else {
             return data.articleList.filter({
+                $0.title.lowercased().localizedStandardContains(searchText.lowercased())
+                ||
+                $0.publishDate.esDate().localizedStandardContains(searchText.lowercased())
+            })
+        }
+    }
+    
+    var searchOfficialResults : [Article] {
+        if searchText.isEmpty{
+            return data.officialList
+        } else {
+            return data.officialList.filter({
                 $0.title.lowercased().localizedStandardContains(searchText.lowercased())
                 ||
                 $0.publishDate.esDate().localizedStandardContains(searchText.lowercased())
