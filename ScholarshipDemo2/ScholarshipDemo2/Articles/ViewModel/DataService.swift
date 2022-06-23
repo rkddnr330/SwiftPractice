@@ -81,7 +81,7 @@ class DataService: ObservableObject{
             }
         }
         ///학교 공홈
-        for i in 1...2 {
+        for i in 1..<2 {
             var offString = officialURL
             offString.append("\(String(i))")
             var offURL = URL(string: offString)
