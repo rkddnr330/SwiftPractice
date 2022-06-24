@@ -1,86 +1,36 @@
-////
-////  MoneyView.swift
-////  ScholarshipDemo2
-////
-////  Created by Park Kangwook on 2022/06/22.
-////
 //
-//import SwiftUI
+//  MoneyView.swift
+//  ScholarshipDemo2
 //
-//struct MoneyView: View {
-//    var body: some View {
-//        NavigationView {
-//            List{
-//                Section {
-//                    //                    ForEach(todaysResults()) { article in
-//                    //                        ArticleCell(article: article, isDateToday: true)
-//                    Text("text")
-//                    Text("text")
-//                }
-//            } header: {
-//                Text("Today")
-//                    .foregroundColor(Color("SubColor"))
-//            } footer: {
-//                //                Text("\(todaysResults().count) Article(s)")
-//                Text("12 Article(s)")
-//                    .background(.clear)
-//                
-//            }
-//            
-//            Section {
-//                //                ForEach(previousResults()) { article in
-//                //                    ArticleCell(article: article, isDateToday: false)
-//                Text("text")
-//                
-//            }
-//            
-//        } header: {
-//            //                Text(oldPostsHeader)
-//            Text("old Posts Header")
-//            
-//                .foregroundColor(Color("SubColor"))
-//        } footer: {
-//            //                    Text("\(previousResults().count) Article(s)")
-//            Text("2 Article(s)")
-//        }
-//        
-//    }
-//}
+//  Created by Park Kangwook on 2022/06/22.
 //
-//
-//
+
 
 import SwiftUI
 
-
-
-struct DataDemooo {
-    var id = UUID()
-    var university: String
-    var department: String
-    var url: String {
-        guard let go = UrlDemo().urlList[department] else { return "" }
-        return go
-    }
-}
+//struct DataDemooo {
+//    var id = UUID()
+//    var university: String
+//    var department: String
+//    var url: String {
+//        guard let go = UrlDemo().urlList[department] else { return "" }
+//        return go
+//    }
+//}
 
 struct MoneyView: View {
-    var totalDemo : [String:[String]] =
-    ["인문대":["불어","언어","국어"],
-     "공대":["기공","화공","컴공"],
-     "자연대":["물리","수학","화학"]
-    ]
+    
     @ObservedObject var data = DataService()
     @State private var searchText = ""
     @Binding var isOnboardingActive : Bool
+    @State private var isPresenting = false
+    @State private var departmentName: String = "화공생명환경공학부 환경공학전공"
+    @Binding var departmentNamee: String
+    
     var body: some View {
         NavigationView {
             VStack {
-                Button {
-                    isOnboardingActive = true
-                } label: {
-                    Text("온보딩 화면")
-                }
+                
 
                 List{
                     Section {
@@ -91,7 +41,7 @@ struct MoneyView: View {
                                 ArticleCelll(article: article)
                             }
                         } header: {
-                            Text("학과 이름")
+                            Text(departmentName)
                                 .foregroundColor(Color("SubColor"))
                         } footer: {
                             Text("\(searchResults.count) Article(s)")
@@ -106,7 +56,7 @@ struct MoneyView: View {
                         }
                         
                     } header: {
-                        Text("학교 공홈")
+                        Text("PNU 공지사항")
                             .foregroundColor(Color("SubColor"))
                     } footer: {
                         Text("\(searchOfficialResults.count) Article(s)")
@@ -119,7 +69,26 @@ struct MoneyView: View {
                 }
                 .disableAutocorrection(true)
                 .onAppear(perform: fetchData)
-            .navigationTitle(Text("장학금 목록"))
+            
+                .navigationTitle(Text("장학금 목록"))
+                
+                Button {
+                    isOnboardingActive = true
+                } label: {
+                    Text("온보딩 화면")
+                }
+                .padding()
+                Button {
+                    isPresenting = true
+                } label: {
+                    Text("학과 선택")
+                }
+                
+            }
+            .sheet(isPresented: $isPresenting) {
+                VStack{
+                    SelectCollege(isPresenting: $isPresenting)
+                }
             }
         }
     }
@@ -149,7 +118,7 @@ struct MoneyView: View {
     }
     
     func fetchData(){
-        data.fetchArticles()
+        data.fetchArticles(department: "화공생명환경공학부 환경공학전공")
     }
 }
 

@@ -15,11 +15,19 @@ class DataService: ObservableObject{
     @Published var officialList = [Article]()
 
     ///긁어올 URL 주소
-    let baseURL = URL(string: "https://cse.pusan.ac.kr/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMSUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2")
+//    let baseURL = URL(string: "https://cse.pusan.ac.kr/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMSUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2")
+//    let baseURL = URL(string:DataDemo().dataDemo["정보의생명공학대학"]!["정보컴퓨터공학부"]! )
+    
+    
+    
+    
+    
     var officialURL = "https://www.pusan.ac.kr/kor/CMS/Board/Board.do?robot=Y&mCode=MN095&mgr_seq=3&page="
     
     
-    func fetchArticles() {
+    func fetchArticles(department: String) {
+        
+        
         articleList.removeAll()
         officialList.removeAll()
 
@@ -28,10 +36,23 @@ class DataService: ObservableObject{
 //        여기서는 뒤에 붙여주는 방식으로 안하기 때문에 주석처리
 //        let articleURL = baseURL?.appendingPathComponent("/cse/14651/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY3NlJTJGMjYwNSUyRmFydGNsTGlzdC5kbyUzRmJic09wZW5XcmRTZXElM0QlMjZpc1ZpZXdNaW5lJTNEZmFsc2UlMjZzcmNoQ29sdW1uJTNEc2olMjZwYWdlJTNEMSUyNnNyY2hXcmQlM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNmJic0NsU2VxJTNENDIyOSUyNnJnc0VuZGRlU3RyJTNEJTI2")
 
-        let articleURL = baseURL
+//        let articleURL = baseURL
+        
 //        let officialURL = officialURL
-        print("🥶\(articleURL)")
-
+//        print("🥶\(articleURL)")
+        
+        
+//        var offString = officialURL
+//        offString.append("\(String(i))")
+//        var offURL = URL(string: offString)
+        
+        let baseURL = URL(string:DataDemo().originURL["\(department)"]!)
+        
+        var articleString: String = DataDemo().originURL["\(department)"]!
+        let detailStirng: String = DataDemo().detailURL["\(department)"]!
+        articleString.append("\(detailStirng)")
+        let articleURL = URL(string:articleString)
+        
         if let articleURL = articleURL{
             do {
                 let websiteString = try String(contentsOf: articleURL)
@@ -81,7 +102,7 @@ class DataService: ObservableObject{
             }
         }
         ///학교 공홈
-        for i in 1..<2 {
+        for i in 1...5 {
             var offString = officialURL
             offString.append("\(String(i))")
             var offURL = URL(string: offString)

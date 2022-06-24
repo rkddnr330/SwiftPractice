@@ -11,7 +11,7 @@ import SwiftUI
 struct ScholarshipDemo2App: App {
     var body: some Scene {
         WindowGroup {
-            AppStorageTest()
+            AppStorageTest(departmentNamee: "화공샹ㅁ")
         }
     }
 }
