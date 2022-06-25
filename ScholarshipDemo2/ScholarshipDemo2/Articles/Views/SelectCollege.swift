@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct SelectCollege: View {
+    @EnvironmentObject var data : DataService
     @Binding var isPresenting: Bool
-    @State var selection: Int = 3
-    var arr = DataDemo().collegeList
+    @State private var selectedCollege = "공과대학"
+    
+    var collegeArr = DataDemo().collegeList
     
     var body: some View {
         NavigationView{
-        VStack {
-            Text("소속 대학을 선택하세요")
-            Picker(selection: $selection, label: Text("")) {
-                ForEach(0..<arr.count, id: \.self) { index in
-                    Text(arr[index])
+            VStack {
+                Text("소속 대학을 선택하세요")
+                Picker(selection: $selectedCollege, label: Text("")) {
+                    ForEach(collegeArr, id: \.self) { index in
+                        Text(index)
+                    }
+                }
+                NavigationLink {
+                    SelectDepartment(isPresenting: $isPresenting, selectedCollege: $selectedCollege)
+                } label: {
+                    Text("다음")
                 }
             }
-            NavigationLink {
-                SelectDepartment(isPresenting: $isPresenting, selection: $selection)
-            } label: {
-                Text("다음")
-            }
-
-        }
         }
     }
 }

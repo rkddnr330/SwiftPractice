@@ -20,12 +20,12 @@ import SwiftUI
 
 struct MoneyView: View {
     
-    @ObservedObject var data = DataService()
+    @EnvironmentObject var data: DataService
     @State private var searchText = ""
     @Binding var isOnboardingActive : Bool
     @State private var isPresenting = false
-    @State private var departmentName: String = "화공생명환경공학부 환경공학전공"
-    @Binding var departmentNamee: String
+//    @State private var departmentName: String = "화공생명환경공학부 환경공학전공"
+//    @Binding var departmentNamee: String
     
     var body: some View {
         NavigationView {
@@ -41,7 +41,7 @@ struct MoneyView: View {
                                 ArticleCelll(article: article)
                             }
                         } header: {
-                            Text(departmentName)
+                            Text(data.currentDepartment)
                                 .foregroundColor(Color("SubColor"))
                         } footer: {
                             Text("\(searchResults.count) Article(s)")
@@ -65,10 +65,10 @@ struct MoneyView: View {
                 }
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
                 .refreshable {
-                    fetchData()
+                    data.fetchArticles(department: data.currentDepartment)
                 }
                 .disableAutocorrection(true)
-                .onAppear(perform: fetchData)
+//                .onAppear(perform: fetchData)
             
                 .navigationTitle(Text("장학금 목록"))
                 
@@ -117,13 +117,15 @@ struct MoneyView: View {
         }
     }
     
-    func fetchData(){
-        data.fetchArticles(department: "화공생명환경공학부 환경공학전공")
-    }
+//    func fetchData(){
+//        data.fetchArticles(department: "화공생명환경공학부 환경공학전공")
+//    }
 }
 
 //struct MoneyView_Previews: PreviewProvider {
+//
 //    static var previews: some View {
 //        MoneyView()
+//            .environmentObject(DataService())
 //    }
 //}

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ScholarshipDemo2App: App {
+    let dataService = DataService()
+    
     var body: some Scene {
         WindowGroup {
-            AppStorageTest(departmentNamee: "화공샹ㅁ")
+            AppStorageTest()
+                .environmentObject(dataService)
         }
     }
 }

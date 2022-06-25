@@ -9,12 +9,11 @@ import SwiftUI
 
 struct AppStorageTest: View {
     @AppStorage("text") var isOnboardingActive = true
-    @Binding var departmentNamee : String
     var body: some View {
         if isOnboardingActive {
             OnboardingDemo(isOnboardingActive: $isOnboardingActive)
         } else {
-            MoneyView(isOnboardingActive: $isOnboardingActive, departmentNamee: $departmentNamee)
+            MoneyView(isOnboardingActive: $isOnboardingActive)
         }
         
     }

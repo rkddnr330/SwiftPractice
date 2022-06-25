@@ -16,10 +16,20 @@ struct OnboardingDemo: View {
             TabView(selection: $selectedTab){
                 VStack{
                     Text("소속 대학을 선택하세요")
+                    Button {
+                        isOnboardingActive = false
+                    } label: {
+                        Text("Skip")
+                    }
                 }
                 .tag(0)
                 VStack{
                     Text("소속 학과를 선택하세요")
+                    Button {
+                        isOnboardingActive = false
+                    } label: {
+                        Text("Skip")
+                    }
                 }
                 .tag(1)
                 VStack{
