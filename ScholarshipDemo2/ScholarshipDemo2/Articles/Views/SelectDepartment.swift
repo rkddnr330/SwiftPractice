@@ -11,7 +11,7 @@ struct SelectDepartment: View {
     @EnvironmentObject var data : DataService
     @Binding var isPresenting: Bool
     @Binding var selectedCollege: String
-    @State private var seletedDepartment = "화공생명환경공학부 환경공학전공"
+    @State private var selectedDepartment = "화공생명환경공학부 환경공학전공"
     
     var departmentArr = DataDemo().departmentList
     
@@ -19,14 +19,19 @@ struct SelectDepartment: View {
         NavigationView{
             VStack{
                 Text("학과를 선택하세요").padding()
-                Picker(selection: $seletedDepartment, label: Text("")) {
+                Picker(selection: $selectedDepartment, label: Text("")) {
                     ForEach(departmentArr[selectedCollege]!, id: \.self) { index in
                         Text(index)
                     }
                 }
                 Button {
                     isPresenting = false
-                    data.currentDepartment = seletedDepartment
+                    if selectedCollege == "공과대학", selectedDepartment == "화공생명환경공학부 환경공학전공" {
+                        data.currentDepartment = selectedDepartment
+                    } else {
+                        data.currentDepartment = departmentArr[selectedCollege]![0]
+                    }
+                    data.currentDepartment = selectedDepartment
 //                    print("0️⃣\(data.currentDepartment)")
                 } label: {
                     Text("완료")
