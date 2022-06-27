@@ -13,22 +13,52 @@ struct ContentView: View {
     
     @ObservedObject var words = WordViewModel()
     @Binding var wordsCount: Double
-    @State private var isShowing = false
-    @State private var showingAlert = false
+    @State private var isShowing = false    //EDIT sheet
+    @State private var showingDetail = false    //단어 detail sheet
+    @State private var showingAlert = false     //EDIT - 단어 개수 조건 불충족시 alert
     
     @State private var isShowingActionSheet = false
+    @State private var editedWord = ""
     
     var body: some View {
-        List(words.wordList, id:\.self) { word in
-            Button {
-                isShowingActionSheet = true
-            } label: {
-                Text(word)
-                    .padding()
+        List {
+            ForEach(0..<words.wordList.count, id:\.self) { i in
+                Button {
+                    isShowingActionSheet = true
+                } label: {
+                    Text(words.wordList[i])
+                        .padding()
+                }
+                .actionSheet(isPresented: $isShowingActionSheet) {
+                    ActionSheet(
+                        title: Text(words.wordList[i]),
+                        buttons: [
+                            .default(Text("수정")) { showingDetail.toggle() },
+                            .cancel()
+                        ]
+                    )
+                }
+                .sheet(isPresented: $showingDetail) {
+                    VStack {
+                        Text("\(words.wordList[i]) 수정")
+                            .bold()
+                            .font(.title)
+                        HStack {
+                            TextField("\(words.wordList[i])", text: $editedWord)
+                                .frame(width: 200)
+                                .padding()
+                                .textFieldStyle(.roundedBorder)
+                            
+                            Button  {
+                                words.wordList[i] = editedWord
+                                showingDetail.toggle()
+                            } label: {
+                                Text("수정하기")
+                            }
+                        }
+                    }
+                }
             }
-
-//            Text(word)
-//                .padding()
         }
         .navigationTitle("List of \(Int(wordsCount)) Words")
         .toolbar{
@@ -70,15 +100,7 @@ struct ContentView: View {
         .task{
             await words.fetchData(Int(wordsCount))
         }
-        .actionSheet(isPresented: $isShowingActionSheet) {
-            ActionSheet(
-                title: Text("title"),
-                buttons: [
-                    .destructive(Text("destructive")){ print("touch") },
-                    .cancel()
-                ]
-            )
-        }
+        
     }
 }
 
